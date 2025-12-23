@@ -1,5 +1,12 @@
 # Mini Landing Page & Bileşen Kütüphanesi
 
+**Live Demo:** [https://staj-landing-challenge.vercel.app/](https://staj-landing-challenge.vercel.app/)
+
+## Lighthouse Skoru
+Projenin performans, erişilebilirlik ve SEO metrikleri Google Lighthouse ile doğrulanmıştır.
+
+![Lighthouse Report](./docs/lighthouse-report.png)
+
 Profesyonel bir staj mülakatı challenge'ı kapsamında geliştirilmiş, React + TypeScript + SCSS Modules tabanlı bir landing page ve yeniden kullanılabilir UI bileşen kütüphanesidir.
 
 ## 🚀 Teknolojiler
