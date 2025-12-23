@@ -10,7 +10,7 @@
   --header-bg: rgba(255, 255, 255, 0.8);
 }
 
-[data-theme='dark'] {
+body.dark-theme {
   --bg-color: #111827;
   --text-color: #f9fafb;
   --card-bg: #1f2937;
@@ -18,6 +18,16 @@
   --input-bg: #374151;
   --modal-overlay: rgba(0, 0, 0, 0.7);
   --header-bg: rgba(17, 24, 39, 0.8);
+}
+
+body.light-theme {
+  --bg-color: #f9fafb;
+  --text-color: #111827;
+  --card-bg: #ffffff;
+  --border-color: #e5e7eb;
+  --input-bg: #ffffff;
+  --modal-overlay: rgba(0, 0, 0, 0.5);
+  --header-bg: rgba(255, 255, 255, 0.8);
 }
 
 *, *::before, *::after {
