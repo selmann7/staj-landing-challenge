@@ -1,0 +1,120 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.contact {
+  padding: 80px 0;
+}
+
+.container {
+  @include container;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  color: #6b7280;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 64px;
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.infoTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.infoText {
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 0.875rem;
+}
+
+.formCard {
+  padding: 32px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.textareaWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.textarea {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  font-size: 1rem;
+  resize: vertical;
+  transition: $transition-base;
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+    box-shadow: 0 0 0 2px rgba($color-primary, 0.2);
+  }
+}
+
+.errorTextarea {
+  border-color: $color-error;
+}
+
+.errorText {
+  font-size: 0.75rem;
+  color: $color-error;
+}
+
+.success {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 40px 0;
+
+  h3 {
+    font-size: 1.5rem;
+    color: $color-success;
+  }
+}
+

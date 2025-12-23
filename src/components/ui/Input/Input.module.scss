@@ -1,0 +1,45 @@
+@import '../../../styles/variables';
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.inputLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.inputField {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  transition: $transition-base;
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+  }
+
+  &::placeholder {
+    color: $color-gray-400;
+  }
+}
+
+.hasError {
+  border-color: $color-error;
+}
+
+.errorMessage {
+  font-size: 0.75rem;
+  color: $color-error;
+}
+
+.helperMessage {
+  font-size: 0.75rem;
+  color: $color-gray-500;
+}

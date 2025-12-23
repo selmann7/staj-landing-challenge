@@ -1,0 +1,61 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.hero {
+  padding: 100px 0;
+  @include flex-center;
+  text-align: center;
+  min-height: 80vh;
+
+  @include mobile {
+    padding: 60px 0;
+  }
+}
+
+.container {
+  @include container;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.title {
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1.1;
+  max-width: 800px;
+
+  @include mobile {
+    font-size: 2.5rem;
+  }
+}
+
+.highlight {
+  color: $color-primary;
+}
+
+.description {
+  font-size: 1.25rem;
+  color: #6b7280;
+  max-width: 600px;
+
+  @include mobile {
+    font-size: 1rem;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+
+  @include mobile {
+    flex-direction: column;
+    width: 100%;
+    
+    button {
+      width: 100%;
+    }
+  }
+}
+

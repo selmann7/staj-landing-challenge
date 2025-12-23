@@ -1,0 +1,56 @@
+@import '../../../styles/variables';
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: $transition-base;
+  border: 1px solid transparent;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.btnPrimary {
+  background-color: $color-primary;
+  color: $color-white;
+  &:hover:not(:disabled) {
+    background-color: $color-primary-hover;
+  }
+}
+
+.btnSecondary {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border-color: var(--border-color);
+  &:hover:not(:disabled) {
+    background-color: var(--border-color);
+  }
+}
+
+.btnOutline {
+  color: $color-primary;
+  border-color: $color-primary;
+  &:hover:not(:disabled) {
+    background-color: rgba($color-primary, 0.05);
+  }
+}
+
+.btnGhost {
+  color: var(--text-color);
+  &:hover:not(:disabled) {
+    background-color: var(--border-color);
+  }
+}
+
+.sizeSm { padding: 6px 12px; font-size: 0.875rem; }
+.sizeMd { padding: 10px 20px; font-size: 1rem; }
+.sizeLg { padding: 14px 28px; font-size: 1.125rem; }
+
+.fullWidth {
+  width: 100%;
+}
