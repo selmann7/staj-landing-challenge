@@ -20,16 +20,16 @@ export const Header: React.FC = () => {
       <div className={styles.container}>
         <div className={styles.logo}>MiniLanding</div>
         <nav className={styles.nav}>
-          <a href="#features" className={styles.navLink}>Features</a>
-          <a href="#pricing" className={styles.navLink}>Pricing</a>
-          <a href="#faq" className={styles.navLink}>FAQ</a>
-          <a href="#contact" className={styles.navLink}>Contact</a>
+          <a href="#features" className={styles.navLink}>Özellikler</a>
+          <a href="#pricing" className={styles.navLink}>Fiyatlandırma</a>
+          <a href="#faq" className={styles.navLink}>SSS</a>
+          <a href="#contact" className={styles.navLink}>İletişim</a>
         </nav>
         <div className={styles.actions}>
-          <Button variant="ghost" onClick={toggleTheme} aria-label="Toggle theme">
+          <Button variant="secondary" size="sm" onClick={toggleTheme} aria-label="Temayı değiştir">
             {theme === 'light' ? '🌙' : '☀️'}
           </Button>
-          <Button size="sm">Get Started</Button>
+          <Button size="sm">Hemen Başla</Button>
         </div>
       </div>
     </header>

@@ -1,8 +1,10 @@
 {
   "name": "staj-challenge",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "description": "Profesyonel Mini Landing Page ve Modern UI Bileşen Kütüphanesi",
+  "author": "Ahmet Selman Küçük",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

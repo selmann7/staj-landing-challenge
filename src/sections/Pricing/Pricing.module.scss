@@ -1,5 +1,5 @@
-@import '../../styles/variables';
-@import '../../styles/mixins';
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
 
 .pricing {
   padding: 80px 0;
@@ -49,6 +49,7 @@
 .priceCard {
   position: relative;
   height: 100%;
+  overflow: visible !important;
 }
 
 .popular {
@@ -62,15 +63,20 @@
 
 .badge {
   position: absolute;
-  top: -12px;
+  top: -14px;
   left: 50%;
   transform: translateX(-50%);
   background-color: $color-primary;
   color: $color-white;
-  padding: 4px 12px;
+  padding: 6px 16px;
   border-radius: 999px;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 4px 6px -1px rgba($color-primary, 0.3);
+  z-index: 10;
 }
 
 .planHeader {

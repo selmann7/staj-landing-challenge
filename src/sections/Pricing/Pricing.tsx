@@ -5,27 +5,27 @@ import { Button } from '../../components/ui/Button';
 
 const PRICING_DATA = [
   {
-    name: 'Starter',
-    price: '$0',
-    description: 'Perfect for side projects and learning.',
-    features: ['5 Components', 'Community Support', 'Basic Styles'],
-    buttonText: 'Get Started',
+    name: 'Başlangıç',
+    price: '0₺',
+    description: 'Yan projeler ve öğrenme aşaması için mükemmel.',
+    features: ['5 Bileşen', 'Topluluk Desteği', 'Temel Stiller'],
+    buttonText: 'Hemen Başla',
     popular: false
   },
   {
-    name: 'Professional',
-    price: '$29',
-    description: 'Ideal for small teams and growing apps.',
-    features: ['All Components', 'Priority Support', 'Custom Themes', 'Source Files'],
-    buttonText: 'Start Free Trial',
+    name: 'Profesyonel',
+    price: '99₺',
+    description: 'Küçük ekipler ve büyüyen uygulamalar için ideal.',
+    features: ['Tüm Bileşenler', 'Öncelikli Destek', 'Özel Temalar', 'Kaynak Dosyalar'],
+    buttonText: 'Ücretsiz Deneme Başlat',
     popular: true
   },
   {
-    name: 'Enterprise',
-    price: 'Custom',
-    description: 'Advanced solutions for large organizations.',
-    features: ['Unlimited Usage', 'Dedicated Support', 'SLA Guarantee', 'Security Audit'],
-    buttonText: 'Contact Sales',
+    name: 'Kurumsal',
+    price: 'Özel',
+    description: 'Büyük kuruluşlar için gelişmiş çözümler.',
+    features: ['Sınırsız Kullanım', 'Özel Destek', 'SLA Garantisi', 'Güvenlik Denetimi'],
+    buttonText: 'Satışla İletişime Geç',
     popular: false
   }
 ];
@@ -35,8 +35,8 @@ export const Pricing: React.FC = () => {
     <section className={styles.pricing} id="pricing">
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.sectionTitle}>Simple Pricing</h2>
-          <p className={styles.sectionSubtitle}>Choose the plan that fits your needs.</p>
+          <h2 className={styles.sectionTitle}>Şeffaf Fiyatlandırma</h2>
+          <p className={styles.sectionSubtitle}>İşinize en uygun planı seçerek hemen kullanmaya başlayın.</p>
         </div>
         <div className={styles.grid}>
           {PRICING_DATA.map((plan, index) => (
@@ -54,11 +54,11 @@ export const Pricing: React.FC = () => {
               }
             >
               <div className={styles.planHeader}>
-                {plan.popular && <span className={styles.badge}>Most Popular</span>}
+                {plan.popular && <span className={styles.badge}>EN POPÜLER</span>}
                 <h3 className={styles.planName}>{plan.name}</h3>
                 <div className={styles.price}>
                   <span className={styles.amount}>{plan.price}</span>
-                  {plan.price !== 'Custom' && <span className={styles.period}>/month</span>}
+                  {plan.price !== 'Özel' && <span className={styles.period}>/aylık</span>}
                 </div>
                 <p className={styles.planDescription}>{plan.description}</p>
               </div>

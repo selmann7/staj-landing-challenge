@@ -5,23 +5,23 @@ import { Accordion } from '../../components/ui/Accordion';
 const FAQ_DATA = [
   {
     id: 'faq-1',
-    title: 'Is this library free to use?',
-    content: 'Yes, the basic components are open-source and free for personal and commercial projects.'
+    title: 'Bu kütüphaneyi kullanmak ücretsiz mi?',
+    content: 'Evet, temel bileşenler açık kaynaklıdır ve kişisel ya da ticari projeler için ücretsizdir.'
   },
   {
     id: 'faq-2',
-    title: 'How do I install the components?',
-    content: 'You can install the package via npm or yarn. Check our documentation for the full installation guide.'
+    title: 'Bileşenleri nasıl kurabilirim?',
+    content: 'Paketi npm veya yarn aracılığıyla yükleyebilirsiniz. Tam kurulum kılavuzu için dokümantasyonumuza göz atın.'
   },
   {
     id: 'faq-3',
-    title: 'Does it support Dark Mode?',
-    content: 'Absolutely! All components are built with CSS variables and support seamless dark/light mode transitions.'
+    title: 'Karanlık Mod desteği var mı?',
+    content: 'Kesinlikle! Tüm bileşenler CSS değişkenleri ile oluşturulmuştur ve sorunsuz karanlık/aydınlık mod geçişlerini destekler.'
   },
   {
     id: 'faq-4',
-    title: 'Can I customize the themes?',
-    content: 'Yes, you can easily override the SCSS variables to match your brand identity.'
+    title: 'Temaları özelleştirebilir miyim?',
+    content: 'Evet, marka kimliğinize uyması için SCSS değişkenlerini kolayca geçersiz kılabilirsiniz.'
   }
 ];
 
@@ -30,8 +30,8 @@ export const FAQ: React.FC = () => {
     <section className={styles.faq} id="faq">
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.sectionTitle}>Frequently Asked Questions</h2>
-          <p className={styles.sectionSubtitle}>Find answers to common questions about our platform.</p>
+          <h2 className={styles.sectionTitle}>Sıkça Sorulan Sorular</h2>
+          <p className={styles.sectionSubtitle}>Platformumuz hakkında en çok merak edilen soruların yanıtlarını bulun.</p>
         </div>
         <div className={styles.accordionWrapper}>
           <Accordion items={FAQ_DATA} />

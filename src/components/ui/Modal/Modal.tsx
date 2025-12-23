@@ -19,6 +19,7 @@ export const Modal: React.FC<ModalProps> = ({
   size = 'md',
 }) => {
   useEffect(() => {
+    // ESC key to close modal and prevent background scroll
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
     };

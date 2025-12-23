@@ -38,6 +38,7 @@ export const Accordion: React.FC<AccordionProps> = ({ items, allowMultiple = fal
               id={triggerId}
               className={styles.accordionTrigger}
               onClick={() => toggleItem(item.id)}
+              /* Accessibility: Aria states for screen readers */
               aria-expanded={isOpen}
               aria-controls={contentId}
               type="button"

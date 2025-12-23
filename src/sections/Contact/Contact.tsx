@@ -14,20 +14,20 @@ export const Contact: React.FC = () => {
     const newErrors = { name: '', email: '', message: '' };
 
     if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
+      newErrors.name = 'İsim alanı zorunludur';
       isValid = false;
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = 'E-posta alanı zorunludur';
       isValid = false;
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email address';
+      newErrors.email = 'Lütfen geçerli bir e-posta adresi giriniz';
       isValid = false;
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
+      newErrors.message = 'Mesaj alanı zorunludur';
       isValid = false;
     }
 
@@ -38,7 +38,6 @@ export const Contact: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validate()) {
-      // "Yalancı submit" simulate
       setIsSuccess(true);
       setFormData({ name: '', email: '', message: '' });
     }
@@ -47,7 +46,6 @@ export const Contact: React.FC = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-    // Clear error when user types
     if (errors[name as keyof typeof errors]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
     }
@@ -57,9 +55,9 @@ export const Contact: React.FC = () => {
     <section className={styles.contact} id="contact">
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.sectionTitle}>Get in Touch</h2>
+          <h2 className={styles.sectionTitle}>Bize Ulaşın</h2>
           <p className={styles.sectionSubtitle}>
-            Have questions? Send us a message and we'll get back to you soon.
+            Her türlü iş birliği veya sorunuz için bizimle her zaman iletişime geçebilirsiniz.
           </p>
         </div>
         
@@ -68,40 +66,40 @@ export const Contact: React.FC = () => {
             {isSuccess ? (
               <div className={styles.successMessage} role="alert">
                 <div className={styles.successIcon} aria-hidden="true">✓</div>
-                <h3 className={styles.successTitle}>Message Sent!</h3>
+                <h3 className={styles.successTitle}>Mesaj Gönderildi!</h3>
                 <p className={styles.successText}>
-                  Thank you for contacting us. We will get back to you shortly.
+                  Bizimle iletişime geçtiğiniz için teşekkürler. En kısa sürede size geri döneceğiz.
                 </p>
                 <Button variant="outline" onClick={() => setIsSuccess(false)}>
-                  Send Another Message
+                  Yeni Mesaj Gönder
                 </Button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className={styles.form}>
                 <Input
-                  label="Full Name"
+                  label="Ad Soyad"
                   name="name"
-                  placeholder="John Doe"
+                  placeholder="Ahmet Yılmaz"
                   value={formData.name}
                   onChange={handleChange}
                   error={errors.name}
                 />
                 <Input
-                  label="Email Address"
+                  label="E-posta Adresi"
                   name="email"
                   type="email"
-                  placeholder="john@example.com"
+                  placeholder="ahmet@ornek.com"
                   value={formData.email}
                   onChange={handleChange}
                   error={errors.email}
                 />
                 <div className={styles.textareaWrapper}>
-                  <label htmlFor="message" className={styles.textareaLabel}>Message</label>
+                  <label htmlFor="message" className={styles.textareaLabel}>Mesajınız</label>
                   <textarea
                     id="message"
                     name="message"
                     rows={5}
-                    placeholder="Tell us what you're looking for..."
+                    placeholder="Size nasıl yardımcı olabiliriz?"
                     className={`${styles.textarea} ${errors.message ? styles.hasError : ''}`}
                     value={formData.message}
                     onChange={handleChange}
@@ -115,7 +113,7 @@ export const Contact: React.FC = () => {
                   )}
                 </div>
                 <Button type="submit" size="lg" fullWidth>
-                  Send Message
+                  Mesaj Gönder
                 </Button>
               </form>
             )}
