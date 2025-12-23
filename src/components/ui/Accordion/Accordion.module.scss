@@ -1,58 +1,74 @@
 @import '../../../styles/variables';
 
-.accordion {
+.accordionContainer {
+  width: 100%;
   border: 1px solid var(--border-color);
   border-radius: 8px;
   overflow: hidden;
+  background-color: var(--card-bg);
 }
 
-.item {
+.accordionItem {
   border-bottom: 1px solid var(--border-color);
+  
   &:last-child {
     border-bottom: none;
   }
 }
 
-.trigger {
+.accordionTrigger {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 16px 20px;
-  background-color: var(--card-bg);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
   color: var(--text-color);
   font-weight: 500;
-  text-align: left;
   transition: $transition-base;
 
   &:hover {
-    background-color: var(--border-color);
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: -2px;
   }
 }
 
-.icon {
+.accordionTitle {
+  font-size: 1rem;
+}
+
+.accordionIcon {
   font-size: 0.75rem;
   transition: transform 0.3s ease;
+  color: $color-gray-500;
 }
 
 .rotate {
   transform: rotate(180deg);
 }
 
-.content {
-  max-height: 0;
+.accordionContentWrapper {
   overflow: hidden;
-  transition: max-height 0.3s ease-out;
-  background-color: var(--bg-color);
+  transition: max-height 0.3s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.01);
 }
 
-.open {
-  max-height: 500px;
-}
-
-.inner {
-  padding: 16px 20px;
+.accordionContent {
+  padding: 0 20px 20px;
   font-size: 0.875rem;
-  color: #6b7280;
+  color: $color-gray-500;
+  line-height: 1.6;
 }
 
+.isOpen {
+  .accordionTrigger {
+    color: $color-primary;
+  }
+}

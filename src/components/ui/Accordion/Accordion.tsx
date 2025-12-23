@@ -26,31 +26,41 @@ export const Accordion: React.FC<AccordionProps> = ({ items, allowMultiple = fal
   };
 
   return (
-    <div className={styles.accordion}>
-      {items.map((item) => (
-        <div key={item.id} className={styles.item}>
-          <button
-            className={styles.trigger}
-            onClick={() => toggleItem(item.id)}
-            aria-expanded={openIds.includes(item.id)}
-            aria-controls={`content-${item.id}`}
-          >
-            <span className={styles.title}>{item.title}</span>
-            <span className={`${styles.icon} ${openIds.includes(item.id) ? styles.rotate : ''}`}>
-              ▼
-            </span>
-          </button>
-          <div
-            id={`content-${item.id}`}
-            className={`${styles.content} ${openIds.includes(item.id) ? styles.open : ''}`}
-            role="region"
-            aria-labelledby={`trigger-${item.id}`}
-          >
-            <div className={styles.inner}>{item.content}</div>
+    <div className={styles.accordionContainer}>
+      {items.map((item) => {
+        const isOpen = openIds.includes(item.id);
+        const triggerId = `accordion-trigger-${item.id}`;
+        const contentId = `accordion-content-${item.id}`;
+
+        return (
+          <div key={item.id} className={`${styles.accordionItem} ${isOpen ? styles.isOpen : ''}`}>
+            <button
+              id={triggerId}
+              className={styles.accordionTrigger}
+              onClick={() => toggleItem(item.id)}
+              aria-expanded={isOpen}
+              aria-controls={contentId}
+              type="button"
+            >
+              <span className={styles.accordionTitle}>{item.title}</span>
+              <span className={`${styles.accordionIcon} ${isOpen ? styles.rotate : ''}`} aria-hidden="true">
+                ▼
+              </span>
+            </button>
+            <div
+              id={contentId}
+              className={styles.accordionContentWrapper}
+              role="region"
+              aria-labelledby={triggerId}
+              style={{ maxHeight: isOpen ? '1000px' : '0' }}
+            >
+              <div className={styles.accordionContent}>
+                {item.content}
+              </div>
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 };
-
