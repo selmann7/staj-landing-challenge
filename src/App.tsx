@@ -1,22 +1,28 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import './styles/main.scss';
 import { Header } from './components/Header';
+import { ThemeToggle } from './components/ThemeToggle';
 import { Hero } from './sections/Hero';
-import { Features } from './sections/Features';
-import { Pricing } from './sections/Pricing';
-import { FAQ } from './sections/FAQ';
-import { Contact } from './sections/Contact';
+
+// Below the fold sections lazy loaded for performance
+const Features = lazy(() => import('./sections/Features').then(m => ({ default: m.Features })));
+const Pricing = lazy(() => import('./sections/Pricing').then(m => ({ default: m.Pricing })));
+const FAQ = lazy(() => import('./sections/FAQ').then(m => ({ default: m.FAQ })));
+const Contact = lazy(() => import('./sections/Contact').then(m => ({ default: m.Contact })));
 
 const App: React.FC = () => {
   return (
     <div className="app">
+      <ThemeToggle />
       <Header />
       <main>
         <Hero />
-        <Features />
-        <Pricing />
-        <FAQ />
-        <Contact />
+        <Suspense fallback={<div style={{ padding: '100px', textAlign: 'center' }}>Loading...</div>}>
+          <Features />
+          <Pricing />
+          <FAQ />
+          <Contact />
+        </Suspense>
       </main>
       <footer style={{ 
         padding: '40px 0', 

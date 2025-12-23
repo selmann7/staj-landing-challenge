@@ -2,22 +2,27 @@ import React from 'react';
 import styles from './Features.module.scss';
 import { Card } from '../../components/ui/Card';
 
-const FEATURES = [
+const FEATURE_DATA = [
   {
-    title: 'Modern Architecture',
-    description: 'Using the latest technologies and patterns for a scalable codebase.',
-    icon: '🚀',
+    title: 'Modern Design',
+    description: 'Clean and professional aesthetic that adapts to any brand identity.',
+    image: 'https://placehold.co/400x250/3b82f6/white?text=Design',
   },
   {
-    title: 'Accessible by Design',
-    description: 'Built with accessibility in mind, following WCAG standards.',
-    icon: '♿',
+    title: 'Full Accessibility',
+    description: 'Built following WCAG guidelines to ensure everyone can use your site.',
+    image: 'https://placehold.co/400x250/10b981/white?text=Accessibility',
   },
   {
-    title: 'Lightning Fast',
-    description: 'Optimized for speed and performance, aiming for 90+ Lighthouse score.',
-    icon: '⚡',
+    title: 'Responsive Layout',
+    description: 'Optimized for mobile, tablet, and desktop screens out of the box.',
+    image: 'https://placehold.co/400x250/f59e0b/white?text=Responsive',
   },
+  {
+    title: 'Easy Integration',
+    description: 'Simple to install and customize within your existing React projects.',
+    image: 'https://placehold.co/400x250/ef4444/white?text=Integration',
+  }
 ];
 
 export const Features: React.FC = () => {
@@ -25,18 +30,25 @@ export const Features: React.FC = () => {
     <section className={styles.features} id="features">
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>Core Features</h2>
-          <p className={styles.subtitle}>Everything you need to build great landing pages.</p>
+          <h2 className={styles.sectionTitle}>Powerful Features</h2>
+          <p className={styles.sectionSubtitle}>
+            Everything you need to build a high-converting landing page.
+          </p>
         </div>
         <div className={styles.grid}>
-          {FEATURES.map((feature, index) => (
-            <Card key={index} title={feature.title} description={feature.description}>
-              <div className={styles.icon}>{feature.icon}</div>
-            </Card>
+          {FEATURE_DATA.map((feature, index) => (
+            <Card
+              key={index}
+              title={feature.title}
+              description={feature.description}
+              image={feature.image}
+              imageWidth={400}
+              imageHeight={250}
+              shadow="md"
+            />
           ))}
         </div>
       </div>
     </section>
   );
 };
-

@@ -11,94 +11,112 @@
 
 .header {
   text-align: center;
-  margin-bottom: 48px;
+  max-width: 700px;
+  margin: 0 auto 56px;
 }
 
-.title {
-  font-size: 2.5rem;
+.sectionTitle {
+  font-size: 2rem;
   font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text-color);
+
+  @include tablet {
+    font-size: 2.5rem;
+  }
 }
 
-.subtitle {
+.sectionSubtitle {
   font-size: 1.125rem;
-  color: #6b7280;
+  color: $color-gray-500;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: 32px;
 
   @include tablet {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @include mobile {
-    grid-template-columns: 1fr;
+  @include desktop {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
   }
 }
 
-.plan {
+.priceCard {
   position: relative;
-  display: flex;
-  flex-direction: column;
+  height: 100%;
 }
 
 .popular {
-  border-color: $color-primary;
-  box-shadow: 0 10px 15px -3px rgba($color-primary, 0.1);
-  transform: scale(1.05);
-
-  @include mobile {
-    transform: none;
+  border: 2px solid $color-primary;
+  
+  @include desktop {
+    transform: scale(1.05);
+    z-index: 1;
   }
 }
 
 .badge {
   position: absolute;
   top: -12px;
-  right: 24px;
+  left: 50%;
+  transform: translateX(-50%);
   background-color: $color-primary;
-  color: white;
+  color: $color-white;
   padding: 4px 12px;
   border-radius: 999px;
   font-size: 0.75rem;
   font-weight: 600;
 }
 
-.name {
+.planHeader {
+  margin-bottom: 24px;
+}
+
+.planName {
   font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 
 .price {
-  font-size: 3rem;
-  font-weight: 800;
-  margin-bottom: 24px;
-
-  span {
-    font-size: 1rem;
-    color: #6b7280;
-    font-weight: 400;
-  }
+  margin-bottom: 16px;
 }
 
-.featuresList {
-  margin-bottom: 32px;
-  flex: 1;
+.amount {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-color);
+}
+
+.period {
+  font-size: 0.875rem;
+  color: $color-gray-500;
+}
+
+.planDescription {
+  font-size: 0.875rem;
+  color: $color-gray-500;
+}
+
+.featureList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .featureItem {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 12px;
   font-size: 0.875rem;
 }
 
-.check {
+.checkIcon {
   color: $color-success;
-  font-weight: 700;
+  font-weight: bold;
 }
-

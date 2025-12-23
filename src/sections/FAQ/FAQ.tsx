@@ -2,27 +2,27 @@ import React from 'react';
 import styles from './FAQ.module.scss';
 import { Accordion } from '../../components/ui/Accordion';
 
-const FAQ_ITEMS = [
+const FAQ_DATA = [
   {
-    id: '1',
+    id: 'faq-1',
+    title: 'Is this library free to use?',
+    content: 'Yes, the basic components are open-source and free for personal and commercial projects.'
+  },
+  {
+    id: 'faq-2',
     title: 'How do I install the components?',
-    content: 'You can install the library via npm or yarn. Detailed instructions are available in the documentation.',
+    content: 'You can install the package via npm or yarn. Check our documentation for the full installation guide.'
   },
   {
-    id: '2',
-    title: 'Is it free to use?',
-    content: 'Yes, the basic version is completely free and open source.',
-  },
-  {
-    id: '3',
+    id: 'faq-3',
     title: 'Does it support Dark Mode?',
-    content: 'Absolutely! Every component is designed with dark mode support out of the box.',
+    content: 'Absolutely! All components are built with CSS variables and support seamless dark/light mode transitions.'
   },
   {
-    id: '4',
-    title: 'Can I use it with Next.js?',
-    content: 'Yes, it works perfectly with Next.js and other modern React frameworks.',
-  },
+    id: 'faq-4',
+    title: 'Can I customize the themes?',
+    content: 'Yes, you can easily override the SCSS variables to match your brand identity.'
+  }
 ];
 
 export const FAQ: React.FC = () => {
@@ -30,14 +30,13 @@ export const FAQ: React.FC = () => {
     <section className={styles.faq} id="faq">
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>Frequently Asked Questions</h2>
-          <p className={styles.subtitle}>Find answers to common questions about our platform.</p>
+          <h2 className={styles.sectionTitle}>Frequently Asked Questions</h2>
+          <p className={styles.sectionSubtitle}>Find answers to common questions about our platform.</p>
         </div>
         <div className={styles.accordionWrapper}>
-          <Accordion items={FAQ_ITEMS} />
+          <Accordion items={FAQ_DATA} />
         </div>
       </div>
     </section>
   );
 };
-

@@ -4,53 +4,52 @@ import { Input } from '../../components/ui/Input';
 import { Button } from '../../components/ui/Button';
 import { Card } from '../../components/ui/Card';
 
-interface FormState {
-  name: string;
-  email: string;
-  message: string;
-}
-
-interface Errors {
-  name?: string;
-  email?: string;
-  message?: string;
-}
-
 export const Contact: React.FC = () => {
-  const [form, setForm] = useState<FormState>({ name: '', email: '', message: '' });
-  const [errors, setErrors] = useState<Errors>({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [errors, setErrors] = useState({ name: '', email: '', message: '' });
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const validate = () => {
-    const newErrors: Errors = {};
-    if (!form.name.trim()) newErrors.name = 'Name is required';
-    if (!form.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-      newErrors.email = 'Invalid email format';
+    let isValid = true;
+    const newErrors = { name: '', email: '', message: '' };
+
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+      isValid = false;
     }
-    if (!form.message.trim()) newErrors.message = 'Message is required';
-    return newErrors;
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+      isValid = false;
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+      isValid = false;
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = 'Message is required';
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length === 0) {
-      console.log('Form submitted:', form);
-      setIsSubmitted(true);
-      setForm({ name: '', email: '', message: '' });
-      setErrors({});
-    } else {
-      setErrors(validationErrors);
+    if (validate()) {
+      // "Yalancı submit" simulate
+      setIsSuccess(true);
+      setFormData({ name: '', email: '', message: '' });
     }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-    if (errors[name as keyof Errors]) {
-      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    setFormData(prev => ({ ...prev, [name]: value }));
+    // Clear error when user types
+    if (errors[name as keyof typeof errors]) {
+      setErrors(prev => ({ ...prev, [name]: '' }));
     }
   };
 
@@ -58,62 +57,66 @@ export const Contact: React.FC = () => {
     <section className={styles.contact} id="contact">
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>Contact Us</h2>
-          <p className={styles.subtitle}>Have questions? We'd love to hear from you.</p>
+          <h2 className={styles.sectionTitle}>Get in Touch</h2>
+          <p className={styles.sectionSubtitle}>
+            Have questions? Send us a message and we'll get back to you soon.
+          </p>
         </div>
-        <div className={styles.grid}>
-          <div className={styles.info}>
-            <h3 className={styles.infoTitle}>Get in touch</h3>
-            <p className={styles.infoText}>
-              Our team is here to help you with any questions you might have. 
-              Fill out the form and we'll get back to you within 24 hours.
-            </p>
-            <div className={styles.details}>
-              <p>📍 123 Innovation Street, Tech City</p>
-              <p>📧 contact@staj-challenge.com</p>
-              <p>📞 +1 (234) 567-890</p>
-            </div>
-          </div>
-          <Card className={styles.formCard}>
-            {isSubmitted ? (
-              <div className={styles.success}>
-                <h3>Thank you!</h3>
-                <p>Your message has been sent successfully.</p>
-                <Button onClick={() => setIsSubmitted(false)}>Send another message</Button>
+        
+        <div className={styles.content}>
+          <Card className={styles.formCard} shadow="lg">
+            {isSuccess ? (
+              <div className={styles.successMessage} role="alert">
+                <div className={styles.successIcon} aria-hidden="true">✓</div>
+                <h3 className={styles.successTitle}>Message Sent!</h3>
+                <p className={styles.successText}>
+                  Thank you for contacting us. We will get back to you shortly.
+                </p>
+                <Button variant="outline" onClick={() => setIsSuccess(false)}>
+                  Send Another Message
+                </Button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className={styles.form}>
                 <Input
                   label="Full Name"
                   name="name"
-                  value={form.name}
+                  placeholder="John Doe"
+                  value={formData.name}
                   onChange={handleChange}
                   error={errors.name}
-                  placeholder="John Doe"
                 />
                 <Input
                   label="Email Address"
                   name="email"
                   type="email"
-                  value={form.email}
+                  placeholder="john@example.com"
+                  value={formData.email}
                   onChange={handleChange}
                   error={errors.email}
-                  placeholder="john@example.com"
                 />
                 <div className={styles.textareaWrapper}>
-                  <label htmlFor="message" className={styles.label}>Message</label>
+                  <label htmlFor="message" className={styles.textareaLabel}>Message</label>
                   <textarea
                     id="message"
                     name="message"
-                    rows={4}
-                    className={`${styles.textarea} ${errors.message ? styles.errorTextarea : ''}`}
-                    value={form.message}
+                    rows={5}
+                    placeholder="Tell us what you're looking for..."
+                    className={`${styles.textarea} ${errors.message ? styles.hasError : ''}`}
+                    value={formData.message}
                     onChange={handleChange}
-                    placeholder="Your message here..."
+                    aria-invalid={!!errors.message}
+                    aria-describedby={errors.message ? 'message-error' : undefined}
                   />
-                  {errors.message && <span className={styles.errorText}>{errors.message}</span>}
+                  {errors.message && (
+                    <span id="message-error" className={styles.errorMessage} role="alert">
+                      {errors.message}
+                    </span>
+                  )}
                 </div>
-                <Button type="submit" fullWidth>Send Message</Button>
+                <Button type="submit" size="lg" fullWidth>
+                  Send Message
+                </Button>
               </form>
             )}
           </Card>
@@ -122,4 +125,3 @@ export const Contact: React.FC = () => {
     </section>
   );
 };
-

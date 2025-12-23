@@ -11,51 +11,29 @@
 
 .header {
   text-align: center;
-  margin-bottom: 48px;
+  max-width: 700px;
+  margin: 0 auto 56px;
 }
 
-.title {
-  font-size: 2.5rem;
+.sectionTitle {
+  font-size: 2rem;
   font-weight: 700;
-}
-
-.subtitle {
-  font-size: 1.125rem;
-  color: #6b7280;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 64px;
+  margin-bottom: 16px;
+  color: var(--text-color);
 
   @include tablet {
-    grid-template-columns: 1fr;
-    gap: 48px;
+    font-size: 2.5rem;
   }
 }
 
-.info {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+.sectionSubtitle {
+  font-size: 1.125rem;
+  color: $color-gray-500;
 }
 
-.infoTitle {
-  font-size: 1.5rem;
-  font-weight: 700;
-}
-
-.infoText {
-  color: #6b7280;
-  line-height: 1.6;
-}
-
-.details {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  font-size: 0.875rem;
+.content {
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .formCard {
@@ -65,56 +43,74 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
 }
 
 .textareaWrapper {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
-.label {
+.textareaLabel {
   font-size: 0.875rem;
   font-weight: 500;
 }
 
 .textarea {
-  padding: 10px 12px;
+  padding: 12px;
   border-radius: 6px;
   border: 1px solid var(--border-color);
   background-color: var(--input-bg);
   color: var(--text-color);
-  font-size: 1rem;
+  font-family: inherit;
   resize: vertical;
   transition: $transition-base;
 
   &:focus {
     outline: none;
     border-color: $color-primary;
-    box-shadow: 0 0 0 2px rgba($color-primary, 0.2);
+  }
+
+  &::placeholder {
+    color: $color-gray-400;
   }
 }
 
-.errorTextarea {
+.hasError {
   border-color: $color-error;
 }
 
-.errorText {
+.errorMessage {
   font-size: 0.75rem;
   color: $color-error;
 }
 
-.success {
+.successMessage {
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
   padding: 40px 0;
-
-  h3 {
-    font-size: 1.5rem;
-    color: $color-success;
-  }
 }
 
+.successIcon {
+  width: 64px;
+  height: 64px;
+  background-color: $color-success;
+  color: $color-white;
+  font-size: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+}
+
+.successTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.successText {
+  color: $color-gray-500;
+  margin-bottom: 32px;
+}
