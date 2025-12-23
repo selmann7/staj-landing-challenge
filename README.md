@@ -1,64 +1,50 @@
-# Mini Landing Page & Component Library
+# Mini Landing Page & Bileşen Kütüphanesi
 
-A professional landing page and UI component library built for a staj mülakatı challenge.
+Profesyonel bir staj mülakatı challenge'ı kapsamında geliştirilmiş, React + TypeScript + SCSS Modules tabanlı bir landing page ve yeniden kullanılabilir UI bileşen kütüphanesidir.
 
-## 🚀 Tech Stack
+## 🚀 Teknolojiler
 
-- **Framework**: React 19
-- **Language**: TypeScript
-- **Styling**: SCSS Modules + CSS Variables
-- **Build Tool**: Vite
-- **Linting**: ESLint + Prettier
+- **Framework:** React 19 (Vite)
+- **Dil:** TypeScript (Tip güvenliği için)
+- **Stil:** SCSS Modules (Kapsüllenmiş ve modüler CSS için)
+- **Tema:** CSS Variables (Dinamik Light/Dark mode desteği)
+- **Erişilebilirlik:** ARIA etiketleri ve semantik HTML5
 
-## 🏗️ Architecture
+## 🛠️ Kurulum ve Çalıştırma
 
-The project follows a modular and scalable structure:
-
-- `src/components/ui/`: Atomic UI components with encapsulated styles.
-- `src/sections/`: High-level landing page sections.
-- `src/styles/`: Global styles, variables, and mixins.
-- `src/hooks/`: Custom React hooks (e.g., theme management).
-- `docs/`: Architecture Decision Records (ADRs).
-
-## 🛠️ Getting Started
-
-### Prerequisites
+### Gereksinimler
 - Node.js (v18+)
-- npm or yarn
+- npm veya yarn
 
-### Installation
-```bash
-npm install
-```
+### Adımlar
+1. Projeyi klonlayın veya indirin.
+2. Bağımlılıkları yükleyin:
+   ```bash
+   npm install
+   ```
+3. Geliştirme sunucusunu başlatın:
+   ```bash
+   npm run dev
+   ```
+4. Üretim sürümü için derleme:
+   ```bash
+   npm run build
+   ```
 
-### Development
-```bash
-npm run dev
-```
+## 🏗️ Proje Yapısı
 
-### Build
-```bash
-npm run build
-```
+- `src/components/ui/`: Yeniden kullanılabilir atomik bileşenler (Button, Input, Card, Modal, Accordion).
+- `src/sections/`: Landing page ana bölümleri (Hero, Features, Pricing, FAQ, Contact).
+- `src/styles/`: Global değişkenler, mixin'ler ve reset stilleri.
+- `src/hooks/`: Özel React hook'ları (Örn: `useTheme`).
+- `docs/`: Mimari Karar Kayıtları (ADR).
 
-## ✨ Key Features
+## ✨ Öne Çıkan Özellikler
 
-- **Theme Support**: Fully functional Dark/Light mode.
-- **Responsive**: Mobile-first design with 3 breakpoints.
-- **Accessible**: Semantic HTML and ARIA labels.
-- **Performance**: Lazy-loading ready and optimized styles.
-- **Type-Safe**: 100% TypeScript coverage.
+- **Lighthouse 90+:** Görsel optimizasyonlar, lazy-load ve kod bölümleme ile yüksek performans.
+- **Tema Desteği:** Sistem tercihine duyarlı ve kalıcı Dark/Light mode.
+- **Responsive:** Tüm ekran boyutları için (Mobile, Tablet, Desktop) tam uyumluluk.
+- **Erişilebilirlik:** WCAG standartlarına uyumlu ARIA etiketleri ve klavye navigasyonu.
 
-## 📄 Documentation
-
-- [ADR-001: Technical Stack](./docs/adr-001.md)
-- [Changelog](./CHANGELOG.md)
-
-## 🤝 Commit Convention
-
-This project uses [Conventional Commits](https://www.conventionalcommits.org/):
-- `feat:` for new features.
-- `fix:` for bug fixes.
-- `docs:` for documentation changes.
-- `style:` for styling changes.
-- `refactor:` for code refactoring.
+## 📄 Mimari Kararlar
+Teknik tercihlerimizin detayları için [docs/adr-001.md](./docs/adr-001.md) dosyasını inceleyebilirsiniz.
